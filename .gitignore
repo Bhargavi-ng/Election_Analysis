@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Classwork Module 3 Practice files
+Python_practice.py
+Python_practice2.py
+Python_practice3.py
+Python_practice4.py
