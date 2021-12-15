@@ -85,8 +85,8 @@ with open(file_to_save, "w") as txt_file:
         f"\nElection Results\n"
         f"-------------------------\n"
         f"Total Votes: {total_votes:,}\n"
-        f"-------------------------\n\n"
-        f"County Votes:\n\n")
+        f"-------------------------\n"
+        f"COUNTY VOTES:\n")
     print(election_results, end="")
 
     # Save the final vote count to the text file.
@@ -119,15 +119,24 @@ with open(file_to_save, "w") as txt_file:
 
     # 7: Print the county with the largest turnout to the terminal.
     highest_county_turnout_summary = (
-        f"-------------------------\n"
-        f"The county with highest turnout is {highest_county_turnout}. \n"
-        f"It's vote count is {highest_county_vote:,} and vote percentage is {highest_county_percentage:.1f}%. \n"
-        f"-------------------------\n")
+        f"\n-------------------------\n"
+        f"HIGHEST TURNOUT COUNTY SUMMARY:\n"
+        f"County: {highest_county_turnout}\n"
+        f"Vote count: {highest_county_vote:,}\n"
+        f"Vote percentage: {highest_county_percentage:.1f}%\n"
+        f"\n-------------------------\n")
     print(highest_county_turnout_summary)
 
     # 8: Save the county with the largest turnout to a text file.
     txt_file.write(highest_county_turnout_summary)
 
+    # Save header for the final candidate vote count to the text file.
+    final_candidate_results = (
+        f"FINAL CANDIDATE VOTE COUNT:\n"
+    )
+    print(final_candidate_results)
+    txt_file.write(final_candidate_results)
+    
     # Save the final candidate vote count to the text file.
     for candidate_name in candidate_votes:
 
@@ -151,7 +160,8 @@ with open(file_to_save, "w") as txt_file:
 
     # Print the winning candidate (to terminal)
     winning_candidate_summary = (
-        f"-------------------------\n"
+        f"\n-------------------------\n"
+        f"WINNER SUMMARY:\n"
         f"Winner: {winning_candidate}\n"
         f"Winning Vote Count: {winning_count:,}\n"
         f"Winning Percentage: {winning_percentage:.1f}%\n"
