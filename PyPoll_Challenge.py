@@ -21,7 +21,6 @@ candidate_votes = {}
 county_list = []
 county_votes = {}
 
-
 # Track the winning candidate, vote count and percentage
 winning_candidate = ""
 winning_count = 0
@@ -30,7 +29,7 @@ winning_percentage = 0
 # 2: Track the largest county and county voter turnout.
 largest_county_vote = 0
 largest_county_turnout = ""
-
+largest_county_percentage = 0
 
 # Read the csv and convert it into a list of dictionaries
 with open(file_to_load) as election_data:
@@ -43,7 +42,7 @@ with open(file_to_load) as election_data:
     for row in reader:
 
         # Add to the total vote count
-        total_votes = total_votes + 1
+        total_votes += 1
 
         # Get the candidate name from each row.
         candidate_name = row[2]
@@ -89,15 +88,16 @@ with open(file_to_save, "w") as txt_file:
         f"-------------------------\n\n"
         f"County Votes:\n")
     print(election_results, end="")
-
+    # Save the final vote count to the text file.
     txt_file.write(election_results)
 
     # 6a: Write a for loop to get the county from the county dictionary.
-    for county in county_votes:
+    for county_name in county_votes:
         # 6b: Retrieve the county vote count.
-        county_vote = county_votes.get(county)
+        county_vote = county_votes[county_name]
         # 6c: Calculate the percentage of votes for the county.
         county_percentage = float(county_vote) / float(total_votes) * 100
+        # Save each county's name, vote count, and percentage of votes in a variable.
         county_results = (
             f"{county_name}: {county_percentage:.1f}% ({county_vote:,})\n")
 
@@ -109,7 +109,7 @@ with open(file_to_save, "w") as txt_file:
         if (county_vote > largest_county_vote) and (county_percentage > largest_county_percentage):
             largest_county_vote = county_vote
             largest_county_turnout = county_name
-            largest_county_percentage = county_percentage
+             # Save each candidate's name, vote count, and percentage of votes in a variable. = county_percentage
 
     # 7: Print the county with the largest turnout to the terminal.
     largest_county_summary = (
